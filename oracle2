@@ -1,3 +1,7 @@
+/*
+* 1. 1.	Let us develop the first table 
+*/
+
 Create table Course_info   
 ( 
 code int, 
@@ -6,7 +10,9 @@ description varchar(20),
 start_date date 
 )
 
-
+/*
+* 1. 2. ABC university has come up with new requirements which requires a change in the COURSE_INFO table we created
+*/
 alter table course_info 
 modify  
 ( 
@@ -23,6 +29,10 @@ rename to cms_course_info;
 
 drop table cms_course_info;
 
+/*
+* 1. 4. Let us insert the following four records into the “COURSE_INFO”  
+*/
+
 insert 
 into course_info 
 values (343, 'Java Programming', 'Basics of Java', to_date('12/12/2012', 'dd/mm/yyyy'));
@@ -34,3 +44,38 @@ values (167, 'C Programming', 'Basics of C', to_date('11/11/2012', 'dd/mm/yyyy')
 
 select * from course_info;
 
+insert 
+into course_info 
+values (106, 'Oracle', 'Oracle SQL', to_date('11/03/2011', 'dd/mm/yyyy'));
+
+insert 
+into course_info 
+values (347, 'RDBMS', 'Basics of RDBMS', null);
+
+update course_info
+set course = 'MYSQL',
+    description = 'MYSQL'
+where course = 'Oracle';
+
+
+delete from course_info
+where course = 'RDBMS';
+
+
+insert 
+into course_info 
+values (231, 'Core Java', 'Java IO', to_date('11/06/2011', 'dd/mm/yyyy'));
+
+insert 
+into course_info 
+values (106, 'Oracle', 'Oracle PL SQL', to_date('11/03/2011', 'dd/mm/yyyy'));
+
+insert 
+into course_info 
+values (302, 'Oracle', 'Oracle Architecture', to_date('11/04/2011', 'dd/mm/yyyy'));
+
+select * from course_info;
+
+select* from course_info where course = 'Core Java';
+
+select unique course from course_info;
