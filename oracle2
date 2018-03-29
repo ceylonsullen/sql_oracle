@@ -1,0 +1,36 @@
+Create table Course_info   
+( 
+code int, 
+course varchar(20), 
+description varchar(20),  
+start_date date 
+)
+
+
+alter table course_info 
+modify  
+( 
+code varchar(20), 
+description varchar(200) 
+)
+
+alter table course_info
+rename column
+course to course_name;
+
+alter table course_info
+rename to cms_course_info;
+
+drop table cms_course_info;
+
+insert 
+into course_info 
+values (343, 'Java Programming', 'Basics of Java', to_date('12/12/2012', 'dd/mm/yyyy'));
+
+insert 
+into course_info 
+values (167, 'C Programming', 'Basics of C', to_date('11/11/2012', 'dd/mm/yyyy'));
+
+
+select * from course_info;
+
