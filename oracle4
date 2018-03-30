@@ -1,3 +1,4 @@
+
 create table students 
 (
 FIRST_NAME varchar(20),
@@ -17,3 +18,68 @@ SUBJECTS varchar(200),
 constraint students_pk primary key (s_id)
 );
 
+
+
+insert into students values (
+'Ranjit',
+'Chatterjee',
+'r_chatt@aaa.com',
+'2/10 ashok vihar',
+'west bengal',
+700101,
+9876578901,
+'S1001',
+to_date('22-Apr-80', 'dd-mon-YY'),
+'BE',
+70,
+69,
+to_date('30-Mar-02', 'dd-mon-YY'),
+'Mechanical Engg.'
+);
+
+
+create table courses
+(
+c_name varchar(50),
+c_code int primary key,
+c_subjects varchar(50),
+c_duration int,
+c_fee int,
+c_description varchar(250)
+);
+
+
+
+insert into courses values 
+(
+'C & Data Structure',
+100,
+'c, ds',
+40,
+4000,
+'Deatiled c and datastructure concepts'
+);
+
+
+
+
+
+create table student_course 
+(
+s_id varchar(6) references students(s_id),
+c_code  references courses(c_code),
+reg_no varchar(10) primary key,
+course_status varchar(50)
+);
+
+insert into student_course
+values
+(
+'S1001',
+100,
+'R1001',
+'COMPL'
+
+);
+
+select * from student_course;
