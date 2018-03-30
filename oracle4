@@ -1,0 +1,19 @@
+create table students 
+(
+FIRST_NAME varchar(20),
+LAST_NAME varchar(20),
+E_MAIL varchar(200),
+ADDRESS varchar(200),
+STATE varchar(200),
+PIN int,
+PHONE_NO int,
+S_ID varchar(6) ,
+DATE_OF_BIRTH date,
+QUALIFICATION varchar(10),
+PERCENT_10 int,
+PERCENT_12 int,
+DATE_OF_PASSING_12 date,
+SUBJECTS varchar(200),
+constraint students_pk primary key (s_id)
+);
+
