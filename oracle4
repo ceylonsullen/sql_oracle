@@ -83,3 +83,11 @@ values
 );
 
 select * from student_course;
+
+
+
+select s.s_id, s.first_name, s.last_name, c.c_code 
+from students s join student_course  sc on s.s_id = sc.s_id join courses c on sc.c_code = c.c_code
+where c.c_code = 102;
+
+
