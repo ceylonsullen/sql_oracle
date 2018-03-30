@@ -1,0 +1,63 @@
+create table student_info 
+(
+student_id varchar(10) not null, 
+first_name varchar(20), 
+last_name varchar(25), 
+address varchar(150),
+constraint student_pk primary key(student_id)
+);
+
+create table course_info 
+(
+course_code varchar(10),
+course_name varchar(20) not null,
+course_description varchar(25),
+course_start_date date,
+course_duration int,
+no_of_participants int,
+course_type char(3),
+constraint course_pk primary key (course_code)
+);
+
+create table student_courses 
+(
+student_id varchar(10),
+course_code varchar(20),
+foreign key (student_id)
+references student_info(student_id),
+foreign key (course_code)
+references course_info(course_code)
+
+);
+
+
+create table course_fees
+(
+course_code varchar(10),
+base_fees int,
+special_fees int,
+discount int,
+constraint fee_k foreign key (course_code)
+references course_info (course_code),
+constraint fee_min check (base_fees > 15000),
+constraint fee_more check  (base_fees > special_fees),
+constraint discount_min  check (discount > 5)
+
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
