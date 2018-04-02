@@ -91,3 +91,95 @@ from students s join student_course  sc on s.s_id = sc.s_id join courses c on sc
 where c.c_code = 102;
 
 
+create table student_score
+(
+reg_no varchar(10) references student_course(reg_no),
+score int,
+exam_date date
+);
+
+
+insert all
+into student_score values('R1001', 70, to_date('12-Jan-04', 'dd-mon-YY'))
+select * from dual;
+
+create table certification
+(
+reg_no varchar(10) references student_course(reg_no),
+c_code references courses(c_code),
+certificate_request_id int primary key,
+certificate_status varchar(20),
+issue_date date
+);
+
+insert all
+into certification values ('R1001',100,101,'APPLIED', null)
+select * from dual;
+
+create table instructor 
+( 
+FIRST_NAME varchar(20),
+LAST_NAME varchar(20),
+ADDRESS varchar(200),
+STATE varchar(200),
+PIN int,
+INSTRUCTOR_ID varchar(10) primary key,
+DATE_OF_BIRTH date,
+QUALIFICATION varchar(10),
+SUBJECTS varchar(200),
+c_code int
+);
+
+insert all 
+into instructor values 
+(
+'Kaushik',
+'Bhatterjee',
+'block A gagan vihar',
+'west bengal',
+700101,
+'I1001',
+to_date('22-Apr-73', 'dd-mm-yy'),
+'BE',
+'Comp Engg',
+100
+)
+select * from dual;
+ 
+ create table emp
+ ( 
+ EMPLOYEE_ID int primary key ,
+FIRST_NAME varchar(20),
+LAST_NAME varchar(20),
+PHONE_NUMBER int,
+HIRE_DATE date,
+SALARY int,
+COMMISSION_PCT number,
+MANAGER_ID int,
+JOB_ID varchar(20),
+DEPARTMENT_ID int
+ );
+
+select s.first_name, s.last_name, s.e_mail,
+c.c_name, c.c_code, scr.score, scr.exam_date
+from students s 
+join student_course sc on s.s_id = sc.s_id
+join courses c on c.c_code = sc.c_code
+join student_score scr on scr.reg_no = sc.reg_no
+where sc.reg_no = 'R1001';
+
+insert all
+into students (s_id, first_name) values ('121212','Hussain')
+select * from dual;
+
+
+-- ** left join **
+select first_name, sc.c_code 
+from students s 
+left join student_course sc on s.s_id = sc.s_id;
+
+-- ** right join **
+
+select first_name, sc.c_code 
+from student_course sc
+right join students s  on s.s_id = sc.s_id;
